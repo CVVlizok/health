@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Здоровье</string>
+
+    <!-- Авторизация -->
+    <string name="login_title">Вход</string>
+    <string name="email_hint">Введите Email</string>
+    <string name="password_hint">Введите пароль</string>
+    <string name="login_button">Войти</string>
+    <string name="signup_button">Регистрация</string>
+    <string name="no_account">Нет аккаунта?</string>
+
+    <!-- Регистрация -->
+    <string name="signup_title">Регистрация</string>
+    <string name="username_hint">Введите имя</string>
+    <string name="signup_create_button">Создать аккаунт</string>
+
+    <!-- Главная навигация -->
+    <string name="nav_home">Главная</string>
+    <string name="nav_info">Поиск</string>
+    <string name="nav_profile">Профиль</string>
+
+    <!-- Поиск информации -->
+    <string name="search_hint">Введите вопрос о здоровье</string>
+    <string name="no_results">Нет информации по запросу</string>
+
+    <!-- Профиль -->
+    <string name="profile_title">Профиль</string>
+    <string name="change_email">Изменить Email</string>
+    <string name="change_password">Изменить пароль</string>
+    <string name="logout">Выйти</string>
+
+    <!-- Изменение почты -->
+    <string name="new_email_hint">Введите новый Email</string>
+    <string name="save_changes">Сохранить</string>
+
+    <!-- Изменение пароля -->
+    <string name="old_password_hint">Введите текущий пароль</string>
+    <string name="new_password_hint">Введите новый пароль</string>
+    <string name="confirm_password_hint">Подтвердите новый пароль</string>
+</resources>
