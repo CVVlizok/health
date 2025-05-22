@@ -30,22 +30,6 @@ class MistralAuthInterceptor : Interceptor {
 }
 
 object WebServerSingleton {
-    /*private const val WEB_SRV_URL = "http://192.168.0.97:8080/" // Проверьте адрес
-
-    fun getApiService(context: Context): ApiService {
-        val authInterceptor = AuthInterceptor(context)
-        val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(authInterceptor)
-            .build()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl(WEB_SRV_URL)
-            .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        return retrofit.create(ApiService::class.java)
-    }*/
 
     fun getMistralApiService(context: Context): MistralApiService {
         val mistralAuthInterceptor = MistralAuthInterceptor()

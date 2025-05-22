@@ -2,10 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Разрешение на интернет для API -->
+    <!-- Разрешение на интернет для работы с сервером -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -29,13 +30,13 @@
         <!-- Экран регистрации -->
         <activity android:name=".SignUpActivity" />
 
-        <!-- Главная активность (управляет фрагментами) -->
+        <!-- Главный экран с фрагментами -->
         <activity android:name=".MainActivity" />
 
-        <!-- Экран изменения почты -->
+        <!-- Изменение почты -->
         <activity android:name=".ChangeEmailActivity" />
 
-        <!-- Экран изменения пароля -->
+        <!-- Изменение пароля -->
         <activity android:name=".ChangePasswordActivity" />
 
         <!-- Экран параметра здоровья -->
