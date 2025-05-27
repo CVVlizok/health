@@ -23,7 +23,7 @@ interface HealthApiService {
     suspend fun addParameterEntry(
         @Path("userId") userId: String,
         @Path("paramId") paramId: Int,
-        @Body entry: HealthParameterEntry
+        @Body entry: Map<String, String>
     )
 
     @GET("parameters/{userId}/{paramId}")

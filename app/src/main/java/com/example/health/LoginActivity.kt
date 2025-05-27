@@ -49,9 +49,12 @@ class LoginActivity : AppCompatActivity() {
                     val response: UserLoginResponse = api.loginUser(request)
 
                     withContext(Dispatchers.Main) {
-                        // Сохраняем токен
+                        // Сохраняем токен и userId в SharedPreferences
                         val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
-                        prefs.edit().putString("token", response.token).apply()
+                        prefs.edit()
+                            .putString("token", response.token)
+                            .putInt("user_id", response.userId) // ← обязательно это
+                            .apply()
 
                         Toast.makeText(this@LoginActivity, "Успешный вход", Toast.LENGTH_SHORT).show()
 

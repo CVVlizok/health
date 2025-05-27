@@ -6,5 +6,6 @@ data class UserLoginRequest(
 )
 
 data class UserLoginResponse(
-    val token: String
+    val token: String,
+    val userId: Int
 )
