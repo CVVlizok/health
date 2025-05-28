@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import com.example.health.util.ThemeManager
 
 class ProfileFragment : Fragment() {
 
@@ -29,6 +31,11 @@ class ProfileFragment : Fragment() {
         passwordLayout.setOnClickListener {
             val intent = Intent(activity, ChangePasswordActivity::class.java)
             startActivity(intent)
+        }
+
+        val themeButton = view.findViewById<Button>(R.id.button)
+        themeButton.setOnClickListener {
+            ThemeManager.toggleTheme(requireContext())
         }
 
         return view
