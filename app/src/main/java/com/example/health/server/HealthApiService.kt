@@ -1,5 +1,7 @@
 package com.example.health.server
 
+import com.example.health.model.ChangeEmailRequest
+import com.example.health.model.ChangePasswordRequest
 import com.example.health.model.UserRegisterRequest
 import com.example.health.model.UserLoginRequest
 import com.example.health.model.HealthParameterEntry
@@ -9,6 +11,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.Response
 
 interface HealthApiService {
 
@@ -31,4 +34,10 @@ interface HealthApiService {
         @Path("userId") userId: String,
         @Path("paramId") paramId: Int
     ): List<HealthParameterEntry>
+
+    @POST("change-email")
+    suspend fun changeEmail(@Body request: ChangeEmailRequest): Response<Unit>
+
+    @POST("change-password")
+    suspend fun changePassword(@Body request: ChangePasswordRequest): Response<Unit>
 }

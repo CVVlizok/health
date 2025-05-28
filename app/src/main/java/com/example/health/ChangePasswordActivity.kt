@@ -5,6 +5,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.health.model.ChangePasswordRequest
+import com.example.health.server.HealthApiService
+import com.example.health.server.KtorApiClient
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ChangePasswordActivity : AppCompatActivity() {
 
@@ -22,20 +29,27 @@ class ChangePasswordActivity : AppCompatActivity() {
             val oldPassword = oldPasswordField.text.toString().trim()
             val newPassword = newPasswordField.text.toString().trim()
             val confirmPassword = confirmPasswordField.text.toString().trim()
-
-            if (oldPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(this, "Заполните все поля", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+            val userId = getSharedPreferences("app_prefs", MODE_PRIVATE).getInt("user_id", -1)
 
             if (newPassword != confirmPassword) {
-                Toast.makeText(this, "Новый пароль не совпадает", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Пароли не совпадают", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Пока просто показываем сообщение и закрываем активность
-            Toast.makeText(this, "Пароль успешно изменён", Toast.LENGTH_SHORT).show()
-            finish()
+            CoroutineScope(Dispatchers.IO).launch {
+                val api = KtorApiClient.getClient(this@ChangePasswordActivity).create(
+                    HealthApiService::class.java)
+                val response = api.changePassword(ChangePasswordRequest(userId, oldPassword, newPassword))
+
+                withContext(Dispatchers.Main) {
+                    if (response.isSuccessful) {
+                        Toast.makeText(this@ChangePasswordActivity, "Пароль успешно изменён", Toast.LENGTH_SHORT).show()
+                        finish()
+                    } else {
+                        Toast.makeText(this@ChangePasswordActivity, "Ошибка: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
 }

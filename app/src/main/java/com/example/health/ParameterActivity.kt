@@ -43,7 +43,7 @@ class ParameterActivity : AppCompatActivity() {
         parameterName = intent.getStringExtra("PARAM_NAME") ?: "Параметр"
         val paramInfo = intent.getStringExtra("PARAM_INFO") ?: "Описание отсутствует"
         val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
-        val userId = prefs.getInt("user_id", -1).toString()
+        userId = prefs.getInt("user_id", -1).toString()
         paramId = getParameterId(parameterName)
 
         parameterTitle.text = parameterName
